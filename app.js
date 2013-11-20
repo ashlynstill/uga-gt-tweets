@@ -56,8 +56,8 @@ if ('development' == app.get('env')) {
 
 //Our only route! Render it with the array we're piping out
 app.get('/', function(req, res) {
-  res.render('results.html', { data: output });
-  //res.json({data: output});
+  //res.render('results.html', { data: output });
+  res.json({data: output});
 });
 
 //Start a Socket.IO listen
