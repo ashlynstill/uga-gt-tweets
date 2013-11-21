@@ -8,7 +8,7 @@ $('#tooltip').hide();
     	var places = results[1];
 		$('#map-view').empty();
 		var w = $('#map-view').width();
-        var h = 600;
+        var h = 450;
         var margin = {top: 40, right: 10, bottom: 20, left: 10},
             width = w - margin.left - margin.right - 100,
             height = h - margin.top - margin.bottom - 100,
@@ -18,8 +18,8 @@ $('#tooltip').hide();
             //Create SVG element
 
         var projection = d3.geo.albersUsa()
-            .scale(w*10.5)
-            .translate([(-1.5)*w, (-0.55)*h]);
+            .scale(w*11.3)
+            .translate([(-1.65)*w, (-0.45)*h]);
 
         var path = d3.geo.path()
             .projection(projection);
@@ -59,6 +59,7 @@ $('#tooltip').hide();
 					.attr('cy', coords[1])
 					.attr('r', 4)
 					.style('fill', d.color)
+					.style('stroke', '#000')
 					.on("mouseover", function() {
 	                    $('#tooltip').fadeIn();
 	                    //Get this bar's x/y values, then augment for the tooltip
@@ -68,7 +69,7 @@ $('#tooltip').hide();
 	                    d3.select("#tooltip")
 	                        .style("left", xPosition+'px')
 	                        .style("top", yPosition+'px')
-	                        .html(d.team);
+	                        .html('<b class="teamname">'+d.team+'</b><br/>'+d.place);
 	                })
 	                .on("mouseout", function() {
 	                    //Remove the tooltip
@@ -79,10 +80,65 @@ $('#tooltip').hide();
 
        $('#bar-view').empty();
         var chart_width = $('#bar-view').width();
-		var margin = {top: 20, right: 20, bottom: 30, left: 40},
-		    width = chart_width - margin.left - margin.right,
-		    height = 700 - margin.top - margin.bottom;
+		var margin = {top: 20, right: 50, bottom: 0, left: 80},
+		    width = chart_width-margin.left-margin.right,
+		    height = 120 - margin.top - margin.bottom;
 
+		var chart_data = [
+			{ "school": counts[2][0], "count":counts[1][0], "color":counts[3][0] },
+			{ "school": counts[2][1], "count":counts[1][1], "color":counts[3][1] }
+		];
+		
+		console.log(chart_data);
+
+	  	var barWidth = 35;
+		//var width = (barWidth + 10) * chart_data.length;
+
+		var y = d3.scale.linear().domain([0, chart_data.length]).range([0, height]);
+		var x = d3.scale.linear().domain([0, d3.max(chart_data, function(datum) { return datum.count; })]).
+		  rangeRound([margin.left, width]);
+
+		// add the canvas to the DOM
+		var bar = d3.select("#bar-view")
+		  .append("svg:svg")
+		  .attr("width", chart_width)
+		  .attr("height", height);
+
+		bar.selectAll("rect")
+		  .data(chart_data)
+		  .enter()
+		  .append("svg:rect")
+		  .attr("y", function(d, index) { return y(index); })
+		  .attr("x", function(d) { return margin.left+15 })
+		  .attr("width", function(d) { return x(d.count); })
+		  .attr("height", barWidth)
+		  .attr("fill", function(d) { return d.color; });
+
+		bar.selectAll(".bar-title")
+			.data(chart_data)
+			.enter()
+			  .append("svg:text")
+			  .attr("class","bar-title")
+			  .attr("y", function(d, index) { return y(index) + barWidth; })
+			  .attr("x", margin.left-5)
+			  .attr("dy", -barWidth/2 +3)
+			  .attr("dx", "1em")
+			  .attr("text-anchor", "end")
+			  .text(function(datum) { return datum.school;})
+			  .attr("fill", "black");
+
+		bar.selectAll(".bar-val")
+			.data(chart_data)
+			.enter()
+			  .append("svg:text")
+			  .attr("class","bar-val")
+			  .attr("y", function(d, index) { return y(index) + barWidth; })
+			  .attr("x", function(d) { return x(d.count) + margin.left + 5 })
+			  .attr("dy", -barWidth/2 +3)
+			  .attr("dx", "1em")
+			  .attr("text-anchor", "start")
+			  .text(function(datum) { return datum.count;})
+			  .attr("fill", "black");
 
 
    	});

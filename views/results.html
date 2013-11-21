@@ -27,16 +27,24 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-7">
-				<h5>Where are people tweeting?</h5>
-				<div id="map-view">
-					
+				<div class="card">
+					<div class="card-title">
+						<h4>Tweet totals</h4>
+					</div>
+					<div id="bar-view">
 
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-5">
-				<h5>Who are they tweeting about?</h5>
-				<div id="bar-view">
+				<div class="card">
+					<div class="card-title">
+						<h4>Tweets by location</h4>
+					</div>
+					<div id="map-view">
+						
 
+					</div>
 				</div>
 			</div>
 		</div>
@@ -46,6 +54,27 @@
 		.background {
 		  fill: none;
 		  pointer-events: all;
+		}
+
+		h4{
+			padding:0px;
+			margin:0px;
+		}
+		.bar-title{
+			color:#000;
+			fill:#000;
+		}
+		.bar-val {
+			stroke:#000;
+			stroke-width:1px;
+			font-size:16px;
+		}
+		.card-title{
+			padding:0px 0px 10px 0px;
+			margin:0px 0px 10px 0px;
+			width:100%;
+			border-bottom:1px solid #ddd;
+			line-height: 1.3em;
 		}
 
 		#states {
@@ -74,6 +103,30 @@
 		    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 		    pointer-events: none;
 		    z-index:10000;
+		    font-size:12px;
+		}
+		.card{
+			border:1px solid #ddd;
+			padding:20px;
+		}
+		.teamname{
+			text-transform: uppercase
+		}
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
+		.x.axis path {
+		  display: none;
+		}
+
+		.line {
+		  fill: none;
+		  stroke: black;
+		  stroke-width: 1.5px;
 		}
 
 	</style>
