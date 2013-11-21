@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Counting sports tweets using Node.js
 ==============================================
 
@@ -32,3 +33,9 @@ I deployed my version to heroku – the heroku link is live [here](http://floati
 
 
 Questions? Broke something? Hate it? Tell me! ashlyn [dot] still [at] gmail [dot] com
+=======
+uga-gt-tweets
+=============
+
+Repurposing of node football tweets app specifically for the UGA-GT game.
+>>>>>>> d6cb10205b861fef4c1c1a048122c88d2f90c3aa
