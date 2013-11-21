@@ -80,23 +80,22 @@ $('#tooltip').hide();
 
        $('#bar-view').empty();
         var chart_width = $('#bar-view').width();
-		var margin = {top: 20, right: 50, bottom: 0, left: 80},
+		var margin = {top: 0, right: 50, bottom: 0, left: 80},
 		    width = chart_width-margin.left-margin.right,
-		    height = 120 - margin.top - margin.bottom;
+		    height = 80 - margin.top - margin.bottom;
 
 		var chart_data = [
 			{ "school": counts[2][0], "count":counts[1][0], "color":counts[3][0] },
 			{ "school": counts[2][1], "count":counts[1][1], "color":counts[3][1] }
 		];
 		
-		console.log(chart_data);
 
 	  	var barWidth = 35;
 		//var width = (barWidth + 10) * chart_data.length;
 
 		var y = d3.scale.linear().domain([0, chart_data.length]).range([0, height]);
 		var x = d3.scale.linear().domain([0, d3.max(chart_data, function(datum) { return datum.count; })]).
-		  rangeRound([margin.left, width]);
+		  rangeRound([0, width]);
 
 		// add the canvas to the DOM
 		var bar = d3.select("#bar-view")
@@ -139,6 +138,16 @@ $('#tooltip').hide();
 			  .attr("text-anchor", "start")
 			  .text(function(datum) { return datum.count;})
 			  .attr("fill", "black");
+
+		$('#tweet-list  ul').empty();
+		data.forEach(function(d,i){
+			if (i>(data.length-6)){
+				var tweet_html = '<li><i class="fa fa-twitter fa-2x '+d.team+'""></i><p>'+d.tweet+'</p></li>';
+				$('#tweet-list ul').append(tweet_html);
+			}
+			
+		})
+
 
 
    	});

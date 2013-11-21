@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="components/socket.io-client/dist/socket.io.min.js"></script>
@@ -33,6 +34,15 @@
 					</div>
 					<div id="bar-view">
 
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-title">
+						<h4>Most recent tweets</h4>
+					</div>
+					<div id="tweet-list">
+						<ul>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -73,12 +83,12 @@
 			padding:0px 0px 10px 0px;
 			margin:0px 0px 10px 0px;
 			width:100%;
-			border-bottom:1px solid #ddd;
+			border-bottom:2px solid #aaa;
 			line-height: 1.3em;
 		}
 
 		#states {
-		  fill: #aaa;
+		  fill: #ccc;
 		  stroke:#fff;
 		  stroke-width:2px;
 		}
@@ -108,6 +118,7 @@
 		.card{
 			border:1px solid #ddd;
 			padding:20px;
+			margin-bottom:30px;
 		}
 		.teamname{
 			text-transform: uppercase
@@ -127,6 +138,36 @@
 		  fill: none;
 		  stroke: black;
 		  stroke-width: 1.5px;
+		}
+		#tweet-list ul{
+			margin:0px;
+			padding:0px;
+		}
+		#tweet-list li{
+			list-style-type:none;
+			border-bottom:1px solid #ddd;
+			padding:10px 0px;
+		}
+		#tweet-list li:last-child{
+			border:none;
+			padding-bottom:0px;
+		}
+		#tweet-list li:first-child{
+			padding-top:0px;
+		}
+		.fa {
+			float:left;
+			margin:5px 5px 0px 0px;
+		}
+		#tweet-list li p {
+			/*float:left;*/
+			
+		}
+		.Tech{
+			color:#F0CF73;
+		}
+		.Georgia{
+			color:#AE070F;
 		}
 
 	</style>

@@ -56,8 +56,8 @@ if ('development' == app.get('env')) {
 
 //Our only route! Render it with the array we're piping out
 app.get('/', function(req, res) {
-  //res.render('results.html', { data: output });
-  res.json({data: output});
+  res.render('results.html', { data: output });
+  //res.json({data: output});
 });
 
 //Start a Socket.IO listen
@@ -98,7 +98,7 @@ t.stream('statuses/filter', { track: watchSymbols }, function(stream) {
         for (var j=0;j<this_param.length;j++){
           if (lowtweet.search(this_param[j]) >= 0){
             count[i]++;
-            times.push({"team":teams[i], "time":tweet.created_at})
+            times.push({"team":teams[i], "time":tweet.created_at, "tweet":tweet.text})
             console.log(count);
             if (tweet.place !== null && tweet.place.country_code === 'US' && tweet.coordinates != null){
               places.push({"team":teams[i], "tweet":tweet.text, "conf":confs[i], "color":colors[i], "coords":tweet.coordinates.coordinates, "place":tweet.place.full_name});
