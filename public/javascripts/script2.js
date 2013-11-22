@@ -139,14 +139,33 @@ $('#tooltip').hide();
 			  .text(function(datum) { return datum.count;})
 			  .attr("fill", "black");
 
-		$('#tweet-list  ul').empty();
+		$('.tweet-list  ul').empty();
+		var uga = [];
+		var gt = [];
 		data.forEach(function(d,i){
-			if (i>(data.length-6)){
-				var tweet_html = '<li><i class="fa fa-twitter fa-2x '+d.team+'""></i><p>'+d.tweet+'</p></li>';
-				$('#tweet-list ul').append(tweet_html);
+			console.log(d.team);
+			if (d.team=='Georgia'){
+				var tweet_html = '<li><i class="fa fa-twitter fa-2x georgia""></i><p>'+d.tweet+'</p></li>';
+				uga.push(tweet_html);
+
+			} if (d.team=='Georgia Tech'){
+				var tweet_html = '<li><i class="fa fa-twitter fa-2x tech""></i><p>'+d.tweet+'</p></li>';
+				gt.push(tweet_html);
 			}
-			
+		
+		});
+		uga.forEach(function(d,i){
+			if (i>(uga.length-4)){
+				$('#uga ul').append(d);
+			}
+		});
+		gt.forEach(function(d,i){
+			if (i>(gt.length-4)){
+				$('#gt ul').append(d);
+			}
 		})
+		
+	
 
 
 

@@ -40,9 +40,19 @@
 					<div class="card-title">
 						<h4>Most recent tweets</h4>
 					</div>
-					<div id="tweet-list">
-						<ul>
-						</ul>
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="tweet-list" id="uga">
+								<ul>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="tweet-list" id="gt">
+								<ul>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -139,27 +149,27 @@
 		  stroke: black;
 		  stroke-width: 1.5px;
 		}
-		#tweet-list ul{
+		.tweet-list ul{
 			margin:0px;
 			padding:0px;
 		}
-		#tweet-list li{
+		.tweet-list li{
 			list-style-type:none;
 			border-bottom:1px solid #ddd;
 			padding:10px 0px;
 		}
-		#tweet-list li:last-child{
+		.tweet-list li:last-child{
 			border:none;
 			padding-bottom:0px;
 		}
-		#tweet-list li:first-child{
+		.tweet-list li:first-child{
 			padding-top:0px;
 		}
 		.fa {
 			float:left;
 			margin:5px 5px 0px 0px;
 		}
-		#tweet-list li p {
+		.tweet-list li p {
 			/*float:left;*/
 			
 		}
